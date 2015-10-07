@@ -1,0 +1,39 @@
+<head>
+<style type='text/css'>
+	#a{
+		width:1000px;
+		height:500px;
+		border:thin solid red;
+	}
+	#b{
+		float:left;
+		width:100px;
+		height:100%;
+		border:thin solid blue;
+	}
+	#c{		
+		width:100%;
+		height:100%;
+		border:thin solid black;
+	}
+</style>
+</head>
+<body id='a'>
+
+<div id='b'>bbb
+</div><div id='c'>ccc
+</div>
+
+</body>
+<script>
+var t=document.getElementById('a');
+t.style.width=screen.availWidth;
+t.style.height=screen.availHeight;
+
+
+
+//
+var i=[1,23,3,4,6,21];//sort()没有对number[]进行排序，需要自定义排序函数，
+i.sort()
+alert(i.join());
+</script>

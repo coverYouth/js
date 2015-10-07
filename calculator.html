@@ -1,0 +1,58 @@
+<script>
+	//设计一个小型计算器
+	function operComp(a,b){//判断oper优先级
+		
+	}
+	function cal(a,oper,b){//不能让解释器理解字符为运算操作符
+		switch(oper){
+			case '\+':			
+				return a+b;
+				break;
+			case '\-':			
+				return a+b;
+				break;
+			case '\*':
+				return a*b;
+				break;
+			case '\/':
+				return a/b;
+				break;
+			case '\^':
+				return Math.pow(a,b);
+				break;
+			default:
+				break;
+		}
+
+	}
+
+	function getResult(txt){
+		var nums_stack=new Array();
+		var oper_stack=new Array();
+
+		var reg=/\+|\-|\*|\/|\^|\(|\)/;
+		var start=0;
+		var sym_index=txt.search(reg);
+
+		while(sym_index>0){
+			nums_stack.push(txt.slice(start,sym_index));	//[)input the number
+			var t1=txt.charAt(sym_index);
+			var t2=oper_stack.();
+			if()
+			oper_stack.push(txt.charAt(sym_index));//input the operateor
+			txt.splice(0,sym_index+1);//delete the handled symbols
+			sym_index=txt.search(reg);
+		}
+
+		alert(nums_stack.toString());
+	}
+	window.onload=function(){
+		var txt=prompt('in:');		
+		getResult(txt);
+		
+		
+		//alert(cal(a,c,b));
+
+	}
+</script>	
+<body></body>

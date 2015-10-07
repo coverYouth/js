@@ -1,0 +1,61 @@
+<script>
+//实现单词的出现频率++++++++++++++++++++++++==
+	function analysisCount(txt){
+		//arr可以直接输出arr，自动转为间隔,的字符串
+		var arr_txt=new Array();
+		/*
+		Array
+		属性：length、prototype
+		方法：concat、join(' ')//转为字符串	toString()//默认，
+		pop()	push()	reverse()	sort()	shift()	length=unshift()//插入到开头，返回长度
+		slice(srart,end)	splice(index,num,new)//删除元素并添加新数值
+		*/
+		/*
+		String
+		属性：length、prototype
+		方法：charAt(i)	concat()	
+		indexOf(value,start)	lastIndexOf()	link()
+		split(sep)//按sep分割字符串为数组	slice(start,end)
+		search()	replace()	match()
+		*/
+		/*
+		DOM
+
+		*/
+
+		arr_txt=txt.split(' ');//按某字符分割字符串为数组		
+		arr_txt.sort();
+		var count=[],k=0;
+		var i=0;		
+		//for (i in arr_txt){var j=parseInt(i)+1;			//for(i in arr){} i为string，不表示位序
+		while(i<arr_txt.length){//涉及数组的位序操作的，直接使用while，不要用for in
+			var j=i+1;			
+			while(j<arr_txt.length){
+				if(arr_txt[i] == arr_txt[j]){j++;}
+				else{break;}
+			}
+			count[k]=j-i;k++;
+			i=j;
+		}
+		count.sort();
+		alert(count.join(','));
+	}
+	window.onload=function(){
+		var txt=prompt('in');
+
+		analysisCount(txt);
+		/*var ele=document.getElementById('ce');
+		ele.innerHTML='ca'.link('www.baidu.com');//innerText
+		*/
+
+/*
+		var a='123';
+		alert(2+a);//运算时从右往左进行，以右边数据类型为准
+		*/
+	}
+</script>
+
+<body>
+	<div id='ce'></div>
+	<div id='out'></div>
+</body>

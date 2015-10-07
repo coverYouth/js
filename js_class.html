@@ -1,0 +1,50 @@
+<html>
+<head>
+	<script>	
+	//修改外部技术值
+	var count_o=0;
+	function Radom () {
+		var count=1;//var声明的是内部变量，private
+		var deal=(function(){//定义private方法，可做自执行
+			count++;
+		})();
+		this.getVal=function(){//可通过属性方法进行返回var值
+			return ++count_o;
+		}
+
+		//this声明的是该构造函数的属性，默认为public
+		this.a=new Array('chen','yong');	
+		this.count2=0;		
+	}
+
+	Radom.prototype.val1='others';//通过this访问
+	Radom.prototype.do1=function(){
+		//this.count==undefined	表明var的变量原型对象中不能引用
+		this.val1=this.val1+' ca';
+		this.a.push('he');
+		alert(this.getVal()+':'+this.a.join('-')+'--'+this.val1);		
+	}
+	/*
+	var t1=new Radom();
+	alert(t1.getVal());
+	var t2=new Radom();
+	
+	alert(t2.getVal());
+	t1.do1();*/
+
+	var once=(function(){
+		var randomNum=Math.random();
+		this.init=function(){
+			return randomNum;
+		}
+		return init();
+	})();//单例的实现，代码自执行，返回一个随机数，如果再次访问，则访问上次执行的结果
+/*		
+	alert(once);
+	alert(once);*/
+</script></head>
+
+<body></body>
+
+
+</html>

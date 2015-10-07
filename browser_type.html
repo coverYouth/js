@@ -1,0 +1,38 @@
+<html>
+<head>
+	<meta http-equlv="Content-Type" content="text/html;charset=utf-8">
+<script type="text/javascript">
+//检测浏览器类型及版本。1、通过浏览器版本支持的js对象来检测；2、通过userAgent对象提取关键字来获取;
+
+//Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 1.1.4322)
+//Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36
+
+function getBrowserInfo(){
+	var agent=navigator.userAgent.toLowerCase();
+
+	var regstr_ie=/msie\s[\d.]+;/gi;
+	var regstr_chrome=/chrome\/[\d.]+/gi;
+	var regstr_ff=/firefox\/[\d.]+/gi;	
+
+	if(agent.indexOf('chrome')>-1){
+		return agent.match(regstr_chrome);
+	}
+}
+window.onload=function(){
+	//document.write(navigator.userAgent);//不能有其他元素	
+	//alert(getBrowserInfo());
+	var t=document.getElementByTagName('input');
+	var length=t.length;
+	alert(length);
+}
+	
+</script>
+</head>
+<body>
+<div id='nima'>++++++</div>
+<form action='' method='post' name='myform' id='myform' onsubmit='check()'>
+	姓名<input type='text' /><br />
+	年龄<input type='text' /><br />
+</form>
+</body>
+</html>
