@@ -1,0 +1,65 @@
+<html>
+<meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
+<head>
+
+</head>
+<body onload='show()'>
+<div id='clock'></div>
+<input type='button' value='停止' id='but' /><br />
+<input type='button' value='计算年龄是否满18' id='but2' />
+</body>
+<script type="text/javascript">
+function judgeAge(birth){
+	var nowtime=new Date();
+	var t=birth.split('-');
+	for(var k in t){
+   		t[k]=parseInt(t[k]);
+	}
+	var intime=new Date();
+	intime.setFullYear(t[0],t[1]-1,t[2]);//设置时间month在0~11
+	if(parseInt((nowtime-intime)/1000/24/60/60) >= 18*365)
+		return true;
+	else
+		return false;
+}
+
+	function show(){
+		var day = new Date();  
+	    var yeas = day.getFullYear();// 获取年份  
+	    var month = day.getMonth();// 获取月份，值在0--11之间  
+	    var days = day.getDate();// 获取每个月的第几天  
+	    var hours = day.getHours();// 获取当前的小时  
+	    var minutes = day.getMinutes();// 获取当前的分钟  
+	    var seconds = day.getSeconds();// 获取当前的时间秒  
+	    var week = day.getDay();// 获取当前的星期值在0--6之间  	    
+	    var weeks = null;  
+	    if (week == 1) {  
+	        weeks = "星期一";  
+	    } else if (week == 2) {  
+	        weeks = "星期二";  
+	    } else if (week == 3) {  
+	        weeks = "星期三";  
+	    } else if (week == 4) {  
+	        weeks = "星期四";  
+	    } else if (week == 5) {  
+	        weeks = "星期五";  
+	    } else if (week == 6) {  
+	        weeks = "星期六";  
+	    } else if (week == 0) {// 0代表的是星期天  
+	        weeks = "星期天";  
+	    }  
+	    // 将日期显示在前台  
+	    document.getElementById('clock').innerHTML=hours+':'+minutes+':'+seconds;  
+	    t=setTimeout('show()',500);
+	}	
+	var btn=document.getElementById('but');
+	btn.onclick=function(){		
+		clearTimeout(t);
+	}
+	var btn1=document.getElementById('but2');
+	btn1.onclick=function(){		
+		var timetxt=prompt('input the birthday');
+		if(judgeAge(timetxt)== false)alert('未满');
+	}
+
+</script>

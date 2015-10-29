@@ -1,0 +1,51 @@
+<!--	www.a.com/crossDomain.html-->
+<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
+<script>
+function one(){
+	document.domian='a.com';
+	var ifr=document.createElement('iframe');
+	ifr.scr='http://script.a.com/b.html';
+	ifr.style.display='none';//设置隐藏框架
+	document.body.appendChild(ifr);
+	ifr.onload=function(){
+		var doc=ifr.contentDocument || ifr.contentDocument.document;
+		alert(doc.getElementById('xx').text);
+	}
+	//同时在b.html中设置document.domian='a.html'
+}
+function two(){
+	alert(navigator.userAgent);
+	var state=0,ifr=document.createElement('iframe');
+	var loadfn=function(){
+		if(state===1){
+			var data=ifr.contentWindow.name;
+			alert(data);
+		}else if(state===0){
+			state=1;
+			ifr.contentWindow.location='proxy.html';
+		}
+	};
+	ifr.src='data.html';
+	if(ifr.attachEvent){
+		ifr.attachEvent('onload',loadfn);
+	}else{
+		ifr.onload=loadfn;	
+	}	
+	document.body.appendChild(ifr);
+}
+function three(){	
+	var ifr=document.createElement('iframe');
+	ifr.style.width='550px';
+	ifr.style.height='550px';
+	document.body.appendChild(ifr);
+	//alert(screen.availWidth);
+	alert(location.protocol);
+	//window.open('data.html');
+//	window.resizeTo('500','500');
+}
+window.onload=three;
+</script>
+<body>
+	<div>测试跨域</div>
+
+</body>

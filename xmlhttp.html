@@ -1,0 +1,28 @@
+<script type="text/javascript">
+	function loadXmlDoc(url){
+		var xmlhttp=null;
+		if(window.XMLHttpRequest){
+			xmlhttp=new XMLHttpRequest();
+		}else if(window.ActiveXObject){
+			xmlhttp=new ActiveXObject('Microsoft.XMLHTTP');
+		}
+		if(xmlhttp!=null){
+			
+			xmlhttp.onreadystatechange=state_change;
+			xmlhttp.open('GET',url,true);//ture是否进行异步请求
+			xmlhttp.send(null);
+		}else{
+			alert('no support');
+		}
+		
+	}
+	function state_change(){
+		if(xmlhttp.readyState==4){
+			if(xmlhttp.status==200){
+				alert('yes');
+			}else{
+
+			}
+		}
+	}
+</script>

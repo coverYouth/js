@@ -1,39 +1,80 @@
 <head>
 <style type='text/css'>
-	#a{
-		width:1000px;
-		height:500px;
-		border:thin solid red;
+*{
+	margin: 0px;
+	padding: 0px;
+	border:1px solid red;
+}
+#f{
+	width: 1000px;
+	height: 600px;
+}
+	#a{		
+		border: 0px;
+		margin: 0 auto;
+		width:1300px;
+		height:800px;	
 	}
 	#b{
-		float:left;
-		width:100px;
-		height:100%;
-		border:thin solid blue;
+		float:left;		
+		width:500px;
+		height:50%;
+		
 	}
 	#c{		
-		width:100%;
-		height:100%;
-		border:thin solid black;
+		margin-left: 500px;		
+		height:50%;		
 	}
+	#d{
+		width: 100%;
+		position: relative;;
+		top:10px;
+		left:20px;
+	}
+	img{
+		position: absolute;
+		top:10px;
+		left: 20px;
+		z-index: -1;
+	}
+	/*
+	#e{
+		position: fixed;
+		top:10px;
+		left: 20px;
+	}*/
 </style>
 </head>
 <body id='a'>
-
+<div id='f'>
+	shiwo de zhonghui shiwo de 
+</div>
 <div id='b'>bbb
-</div><div id='c'>ccc
+	<img src='a.jpg'>
+</div>
+<div id='c'><span>ccc</span>
+	<div id='d'>ca</div>
+	<div id='e'>cad</div>
 </div>
 
 </body>
 <script>
+var ce={a:1,b:2,c:3,d:6};
+function check(a){//返回对象的index值
+	return Object.keys(a).filter(function(x){return a[x]>2});
+//Object.keys(obj)返回obj的keys数组
+//filter过滤数组
+}
+alert(check(ce));
+/*
 var t=document.getElementById('a');
 t.style.width=screen.availWidth;
 t.style.height=screen.availHeight;
 
 
-
-//ceshi
 var i=[1,23,3,4,6,21];//sort()没有对number[]进行排序，需要自定义排序函数，
-i.sort()
-alert(i.join());
+i.sort(function(a,b){
+	return a>=b?(a==b?0:1):-1;
+})
+alert(i.join());*/
 </script>

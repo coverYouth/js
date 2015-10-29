@@ -1,0 +1,50 @@
+<script type="text/javascript">
+Function.prototype.method=function(name,func){
+    if(!this.prototype[name]){
+        this.prototype[name]=func;
+    }
+    return this;//指代的是最外层的Function对象。
+}
+Function.method('inherits',function(Parent){
+	this.prototype=new Parent();
+	return this;
+});
+
+var Manmal=function(name){//js每个Function都包含prototype，即类的原型对象，用首字母大写区别类
+	this.name=name;
+};
+Manmal.prototype.says=function(){return this.saying || '';};
+
+var Cat=function(name){
+	this.name=name;
+	this.saying='chenyong';
+}.
+inherits(Manmal).//继承，调用Manmal的构造函数
+method('getName',function(){//级联方式，method直接将方法放置到prototype上面
+	return this.says()+' '+this.name;
+});
+
+var mammal=function(spec){
+	var that={};
+	var other=function(){//其他需要在内部使用的私有属性或方法
+
+	};
+
+	that.other = other;//之后绑定到that作为公有方法也可。
+	that.get_name=function(){
+		return spec.name;
+	}
+	return that;
+};
+var bike=function(spec,my){
+	var that=mammal(spec);
+	var my=my || {};//将私有属性和方法放在my结构体中
+
+	that.says=function(){
+		return that.get_name()+' '+'ha?';
+
+	};
+	return that;
+
+};
+</script>
